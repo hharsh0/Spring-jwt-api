@@ -3,7 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.LoginUserDto;
 import com.example.demo.model.RegisterUserDto;
 import com.example.demo.model.User;
-import com.example.demo.responses.LoginResponse;
+import com.example.demo.model.LoginResponse;
 import com.example.demo.service.AuthenticationService;
 import com.example.demo.service.JwtService;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +37,7 @@ public class AuthenticationController {
 
         String jwtToken = jwtService.generateToken(authenticatedUser);
 
-        com.example.demo.responses.LoginResponse loginResponse = new LoginResponse().setToken(jwtToken).setExpiresIn(jwtService.getExpirationTime());
+        LoginResponse loginResponse = new LoginResponse().setToken(jwtToken).setExpiresIn(jwtService.getExpirationTime());
 
         return ResponseEntity.ok(loginResponse);
     }
